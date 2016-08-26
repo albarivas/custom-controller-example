@@ -1,0 +1,28 @@
+<!-- En esta página usamos un custom controller, que implementa TODA la lógica de la página
+Opciones:
+- Standard controller - no Apex controller, save/view/edit...
+- Standard controller + extension(s) - save/view/edit... +  logic in extension (s) controller
+- Custom controller - logic in custom controller
+- Custom controller + extension(s) - logic in custom controller + logic in extension (s) controller
+-->
+<apex:page controller="HorasDeOficinaController2">
+    <!-- El custom controller está asociado con la página gracias al atributo controller -->
+    <apex:form >
+        <apex:pageBlock title="Editar nombre de cuenta para el usuario: {!$User.FirstName}">
+            <apex:pageBlockSection >
+                <apex:pageBlockSectionItem >Nombre de la cuenta: <apex:inputField value="{!account.Name}"/></apex:pageBlockSectionItem>
+	            <apex:pageBlockSectionItem >Número de la cuenta: <apex:inputField value="{!account.AccountNumber}"/></apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockButtons ><apex:commandButton action="{!save}" value="save"/></apex:pageBlockButtons>
+            <!-- Los métodos del controller se pueden referenciar con {!blabla} -->
+            <!-- Los atributos del controller necesitan que haya definido un getter y un setter o bien una property (binding) 
+            	- GETTER - Sólo lectura
+            	- GETTER + SETTER - Escritura
+            -->
+            <!-- ACTIONS: 
+				- Se ejecutan todos los setter
+				- Se envía el formulario al servidor
+			-->
+        </apex:pageBlock>
+    </apex:form>
+</apex:page>
